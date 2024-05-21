@@ -24,6 +24,7 @@ function playRound(playerChoice,computerChoice){
     } else if ( (playerChoice === 'rock' && computerChoice ==='scissor') ||
                 (playerChoice === 'scissor' && computerChoice ==='paper') ||
                 (playerChoice === 'paper' && computerChoice ==='rock')){
+        
         div.textContent = `You win. ${playerChoice} beats ${computerChoice}`
         playerScore+=1
                 }
@@ -35,15 +36,18 @@ function playRound(playerChoice,computerChoice){
 
 }
 
-
+// function that handles the click on the button
 function func(button){
         let computerChoice = getComputerChoice()
+        // get the value of the clicked button
         let playerChoice = button.innerText;
         playRound(playerChoice,computerChoice);
         const text = `Current score: Player ${playerScore} points vs computer ${computerScore} points`
-        result.textContent = text
+        score.textContent = text
+        // handle when the score reaches 5 points. 
         if (playerScore === 5) {
             final.textContent = 'WOOOW YOU WIN!'
+            // Way to remove Event Listener
             buttons.forEach(button => {
                 button.removeEventListener('click', handleClick);
             });
@@ -56,10 +60,15 @@ function func(button){
         
 }
 
+// Division to show the result of single play
 const div = document.querySelector('.result')
-const result = document.querySelector('.score')
+// Show the current score
+const score = document.querySelector('.score')
+// Division to show the final result
 const final = document.querySelector('div')
+
 const buttons = document.querySelectorAll('button')
+// Get the choice of the player
 buttons.forEach( (button) => {
     button.addEventListener('click',handleClick = ()=>{
         func(button)}
