@@ -43,6 +43,10 @@ function playRound(playerChoice,computerChoice){
     }
 }
 
+const buttons = document.querySelectorAll('button')
+buttons.forEach( button => {
+    playerChoice = button.innerText
+    button.addEventListener('click',playRound(playerChoice,computerChoice))
 
 })
 
