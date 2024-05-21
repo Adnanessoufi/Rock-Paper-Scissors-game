@@ -44,23 +44,6 @@ function playRound(playerChoice,computerChoice){
 }
 
 
-//write a 'playGame' function that plays 5 rounds declares a winner at the end.
-function playGame(){
-    for(let i = 0; i<5; i++){
-        //in each loop, get both player and computer choices and evaluate them using playRound fct.
-        playerChoice = getHumanChoice()
-        computerChoice = getComputerChoice()
-        playRound(playerChoice,computerChoice)
-        console.log(`Current score: Player ${playerScore} points vs Computer ${computerScore} points`)
-    }
-    //Compare between the scores and give the result.
-    if (playerScore === computerScore)
-        console.log(`It's a tie`)
-    else if (playerScore > computerScore)
-        console.log(`Congratulations. You Win`)
-    else console.log(`unfortunately. You lose`)
-}
-
-playGame()
+})
 
 
