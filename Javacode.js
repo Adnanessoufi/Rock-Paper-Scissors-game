@@ -6,18 +6,10 @@ function getComputerChoice(){
     const MainList = ['rock','paper','scissor'];
    //random choice from that array
     let computerChoiceIndex = Math.floor(Math.random()*MainList.length);
-    computerChoice = MainList[computerChoiceIndex]
+    let computerChoice = MainList[computerChoiceIndex]
    //return the random choice
    return computerChoice
 }
-
-//Create a 'getHumanChoice' function that takes the user choice and returns it.
-function getHumanChoice(){
-    //take the user choice by prompting a message and return it
-    let userChoice = prompt("choose between rock,paper,scissor").toLocaleLowerCase().trim()
-    return userChoice
-}
-
 
 // write variables to keep track of the player and computer score. Set them to 0.
 let playerScore = 0
@@ -45,10 +37,15 @@ function playRound(playerChoice,computerChoice){
 }
 
 const buttons = document.querySelectorAll('button')
-buttons.forEach( button => {
-    playerChoice = button.innerText
-    button.addEventListener('click',playRound(playerChoice,computerChoice))
 
+
+buttons.forEach( (button) => {
+    button.addEventListener('click', () => {
+        let computerChoice = getComputerChoice()
+        let playerChoice = button.innerText;
+        playRound(playerChoice,computerChoice)}
+    )
 })
+
 
 
