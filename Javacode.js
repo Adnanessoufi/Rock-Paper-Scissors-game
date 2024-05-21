@@ -17,7 +17,6 @@ let computerScore = 0
 
 //write a 'playRound' function that evaluate the players choices increments the round winner’s score and announce the winner.
 function playRound(playerChoice,computerChoice){
-    const div = document.querySelector('div')
     //when the result will be a tie
     if (playerChoice === computerChoice) {
         div.textContent=`It's a tie. You both chose ${playerChoice}`
@@ -25,27 +24,45 @@ function playRound(playerChoice,computerChoice){
     } else if ( (playerChoice === 'rock' && computerChoice ==='scissor') ||
                 (playerChoice === 'scissor' && computerChoice ==='paper') ||
                 (playerChoice === 'paper' && computerChoice ==='rock')){
-        div.textContent=`You win. ${playerChoice} beats ${computerChoice}`
+        div.textContent = `You win. ${playerChoice} beats ${computerChoice}`
         playerScore+=1
-
                 }
     // other cases will be definitely a lost.
     else {
-        div.textContent=`You lost! ${computerChoice} beats ${playerChoice})`
+        div.textContent=`You lost! ${computerChoice} beats ${playerChoice} `
         computerScore+=1
     }
+
 }
 
-const buttons = document.querySelectorAll('button')
 
-
-buttons.forEach( (button) => {
-    button.addEventListener('click', () => {
+function func(button){
         let computerChoice = getComputerChoice()
         let playerChoice = button.innerText;
-        playRound(playerChoice,computerChoice)}
-    )
+        playRound(playerChoice,computerChoice);
+        const text = `Current score: Player ${playerScore} points vs computer ${computerScore} points`
+        result.textContent = text
+        if (playerScore === 5) {
+            final.textContent = 'WOOOW YOU WIN!'
+            buttons.forEach(button => {
+                button.removeEventListener('click', handleClick);
+            });
+        } else if (computerScore === 5) {
+            final.textContent = 'HEHEHEHE YOU ARE A LOSER!!'
+            buttons.forEach(button => {
+                button.removeEventListener('click', handleClick);
+            });
+        }
+        
+}
+
+const div = document.querySelector('.result')
+const result = document.querySelector('.score')
+const final = document.querySelector('div')
+const buttons = document.querySelectorAll('button')
+buttons.forEach( (button) => {
+    button.addEventListener('click',handleClick = ()=>{
+        func(button)}
+)    
 })
-
-
 
